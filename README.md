@@ -78,6 +78,19 @@ npm install react-native-screens
 
 ---
 
+### 5. `@expo/ngrok`
+
+Este paquete es necesario para la ejecucion, para poder usar el --tunnel
+```bash
+npm install --save-dev @expo/ngrok
+```
+
+se recomienda ejecutar la aplicacion como 
+```bash
+npx expo start --tunnel -c
+```
+---
+
 ## Instalación de todos los paquetes
 
 Si se desea instalar las dependencias desde cero, se pueden ejecutar los siguientes comandos:
@@ -87,12 +100,7 @@ npm install @react-navigation/native
 npm install @react-navigation/native-stack
 npm install react-native-safe-area-context
 npm install react-native-screens
-```
-
-O instalar los cuatro paquetes mediante un solo comando:
-
-```bash
-npm install @react-navigation/native @react-navigation/native-stack react-native-safe-area-context react-native-screens
+npm install --save-dev @expo/ngrok
 ```
 
 ### Resumen
@@ -103,5 +111,6 @@ npm install @react-navigation/native @react-navigation/native-stack react-native
 | `@react-navigation/native-stack` | Navegación entre pantallas mediante Stack |
 | `react-native-safe-area-context` | Manejo de áreas seguras de la pantalla |
 | `react-native-screens` | Integración y optimización de pantallas nativas |
+| `@expo/ngrok` | Atributo de Ejecución de Expo go|
 
 Estas dependencias serán suficientes para implementar la navegación básica requerida por el proyecto, incluyendo la pantalla principal, la pantalla de detalle y el manejo de las áreas seguras de los dispositivos móviles.
