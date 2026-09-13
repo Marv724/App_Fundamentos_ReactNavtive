@@ -14,7 +14,6 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // Simula carga asincrónica de datos (2 segundos)
     const timer = setTimeout(() => {
       setProducts(PRODUCTS);
       setLoading(false);
@@ -42,13 +41,15 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
           <ProductCard
             title={item.title}
             price={item.price}
-            category={item.category+"    "}
+            category={item.category}
             description={item.shortDescription}
             image={item.image}
             onPress={() => navigation.navigate('Detail', { product: item })}
           />
         )}
         showsVerticalScrollIndicator={false}
+        /* AGREGAR ESTA LÍNEA: Relleno inferior interno para que la última tarjeta no quede bajo los botones */
+        contentContainerStyle={styles.listContent}
       />
     </View>
   );
@@ -59,6 +60,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     backgroundColor: '#f8fafc',
+  },
+  listContent: {
+    paddingBottom: 30, // Espacio extra al final de la lista
   },
   centered: {
     flex: 1,
