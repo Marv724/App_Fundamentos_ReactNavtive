@@ -17,7 +17,7 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
     const timer = setTimeout(() => {
       setProducts(PRODUCTS);
       setLoading(false);
-    }, 2000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -26,7 +26,7 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
     return (
       <View style={styles.centered}>
         <ActivityIndicator size="large" color="#0284c7" />
-        <Text style={styles.loadingText}>Cargando productos del mercado...</Text>
+        <Text style={styles.loadingText}>Cargando Productos...</Text>
       </View>
     );
   }
@@ -41,14 +41,13 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
           <ProductCard
             title={item.title}
             price={item.price}
-            category={item.category}
+            category={item.category+ "   "}
             description={item.shortDescription}
             image={item.image}
-            onPress={() => navigation.navigate('Detail', { product: item })}
+            onPress={(color) => navigation.navigate('Detail', { product: item, cardColor: color })}
           />
         )}
         showsVerticalScrollIndicator={false}
-        /* AGREGAR ESTA LÍNEA: Relleno inferior interno para que la última tarjeta no quede bajo los botones */
         contentContainerStyle={styles.listContent}
       />
     </View>
@@ -59,19 +58,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 16,
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#f1f5f9',
   },
   listContent: {
-    paddingBottom: 30, // Espacio extra al final de la lista
+    paddingBottom: 30,
   },
   centered: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#f1f5f9',
   },
   loadingText: {
+    textAlign: 'center',
     marginTop: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     color: '#64748b',
     fontSize: 14,
   },

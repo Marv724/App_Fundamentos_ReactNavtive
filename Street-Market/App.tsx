@@ -36,7 +36,7 @@ export default function App() {
                 style={styles.profileButton}
                 activeOpacity={0.7}
               >
-                <Text style={styles.profileButtonText}>Perfil   </Text>
+                <Text style={styles.profileButtonText}>Perfil </Text>
               </TouchableOpacity>
             ),
           })}
@@ -44,9 +44,9 @@ export default function App() {
         <Stack.Screen
           name="Detail"
           component={DetailScreen}
-          options={({ route }) => ({
-            title: route.params.product.title,
-          })}
+          options={{
+            title: 'Detalles de Producto',
+          }}
         />
         <Stack.Screen
           name="Profile"
@@ -63,13 +63,17 @@ export default function App() {
 const styles = StyleSheet.create({
   profileButton: {
     backgroundColor: '#0369a1',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     borderRadius: 6,
+    marginRight: 4,
   },
   profileButtonText: {
     color: '#ffffff',
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: '600',
+    textAlign: 'center',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
   },
 });

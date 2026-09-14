@@ -8,23 +8,23 @@ interface CategoryBadgeProps {
 export const CategoryBadge: React.FC<CategoryBadgeProps> = ({ text }) => {
   return (
     <View style={styles.badge}>
-      <Text style={styles.badgeText}>{text}</Text>
+      <Text style={styles.badgeText} numberOfLines={1}>{text}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   badge: {
-    backgroundColor: '#e0f2fe',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
+    backgroundColor: '#0284c7', // Un tono más visible para resaltar el texto blanco
+    paddingHorizontal: 12,
+    paddingVertical: 5,
     borderRadius: 6,
     alignSelf: 'flex-start',
-    marginBottom: 6,
+    marginBottom: 8,
   },
   badgeText: {
-    color: '#0369a1',
+    color: '#ffffff',
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 });
