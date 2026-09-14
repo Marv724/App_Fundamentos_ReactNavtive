@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { CategoryBadge } from './CategoryBadge';
 
@@ -8,8 +8,10 @@ interface ProductCardProps {
   category: string;
   description: string;
   image: string;
-  onPress: () => void;
+  onPress: (color: string) => void;
 }
+
+const CARD_COLORS = ['#f0fdf4', '#e0f2fe', '#fefce8'];
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   title,
@@ -19,12 +21,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   image,
   onPress,
 }) => {
+  const cardColor = useMemo(() => {
+    const randomIndex = Math.floor(Math.random() * CARD_COLORS.length);
+    return CARD_COLORS[randomIndex];
+  }, []);
+
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.85}>
+    <TouchableOpacity
+      style={[styles.card, { backgroundColor: cardColor }]}
+      onPress={() => onPress(cardColor)}
+      activeOpacity={0.85}
+    >
       <Image source={{ uri: image }} style={styles.image} resizeMode="cover" />
       <View style={styles.infoContainer}>
         <CategoryBadge text={category} />
-        <Text style={styles.title} numberOfLines={1}>{title}</Text>
+        <Text style={styles.title} numberOfLines={2}>{title}</Text>
         <Text style={styles.description} numberOfLines={2}>{description}</Text>
         <Text style={styles.price}>${price.toFixed(2)}</Text>
       </View>
@@ -34,7 +45,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#ffffff',
     borderRadius: 12,
     marginBottom: 16,
     overflow: 'hidden',
@@ -49,7 +59,7 @@ const styles = StyleSheet.create({
     height: 180,
   },
   infoContainer: {
-    padding: 14,
+    padding: 16,
   },
   title: {
     fontSize: 16,
