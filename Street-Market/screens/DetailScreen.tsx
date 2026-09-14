@@ -49,7 +49,7 @@ export const DetailScreen: React.FC<Props> = ({ route }) => {
           <Text style={styles.description}>{product.fullDescription}</Text>
 
           <TouchableOpacity style={styles.buyButton} activeOpacity={0.8}>
-            <Text style={styles.buyButtonText}>Agregar al Carrito            </Text>
+            <Text style={styles.buyButtonText}>Agregar al Carrito     </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -118,5 +118,10 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    textTransform: 'uppercase',
+    textAlignVertical: 'center',
   },
 });
